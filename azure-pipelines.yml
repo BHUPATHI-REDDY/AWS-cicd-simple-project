@@ -28,6 +28,6 @@ steps:
 - task: AzureWebAppContainer@1
   displayName: Deploy to App Service
   inputs:
-    azureSubscription: azure-connection1
+    azureSubscription: acr-connection1
     appName: bhupthi-ckewe8fcgrhkb8ac
     containers: myappserviceimage.azurecr.io/nodejsapp:latest
