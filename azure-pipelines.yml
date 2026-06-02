@@ -1,0 +1,35 @@
+
+
+trigger:
+- bhupathi
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  imageRepository: nodejsapp
+  containerRegistry: acr-connection
+  tag: latest
+
+steps:
+
+# Build and Push Docker Image
+
+- task: Docker@2
+  displayName: Build and Push Image
+  inputs:
+    command: buildAndPush
+    repository: $(imageRepository)
+    dockerfile: Dockerfile
+    containerRegistry: $(containerRegistry)
+    tags: |
+      $(tag)
+
+# Deploy to Azure App Service
+
+- task: AzureWebAppContainer@1
+  displayName: Deploy to App Service
+  inputs:
+    azureSubscription: azure-connection1
+    appName: bhupthi-ckewe8fcgrhkb8ac
+    containers: myappserviceimage.azurecr.io/nodejsapp:latest
