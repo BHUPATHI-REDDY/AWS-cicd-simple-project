@@ -29,5 +29,5 @@ steps:
   displayName: Deploy to App Service
   inputs:
     azureSubscription: acr-connection1
-    appName: bhupthi-ckewe8fcgrhkb8ac
+    appName: bhupthi
     containers: myappserviceimage.azurecr.io/nodejsapp:latest
